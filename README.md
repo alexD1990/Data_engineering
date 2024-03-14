@@ -3,6 +3,7 @@ ETL Process: Transforming Data from Multiple Sources for Analysis
 
 This process outlines an ETL (Extract, Transform, Load) pipeline that ingests data from two different sources, cleans and transforms it, and ultimately stores it in a centralized location for further analysis.
 
+
 1. Extract:
 
 * Data is retrieved from two sources:
@@ -18,7 +19,14 @@ This process outlines an ETL (Extract, Transform, Load) pipeline that ingests da
    * Revenue Growth: This involves calculating the Compound Annual Growth Rate (CAGR) of the revenue data.
    * EPS Growth: Similar to revenue growth, CAGR is calculated for the earnings per share (EPS) data.
    * PE Ratio: The price-to-earnings ratio (PE) is computed by dividing the stock price by the EPS.
-   * Future Price Estimates: Based on the calculated growth rates and current financial metrics, estimates for future revenue, EPS, and stock prices are generated. This might involve extrapolating trends or using more sophisticated financial modeling techniques.
+   * Future Price Estimates: Based on the calculated growth rates and current financial metrics, estimates for future revenue, EPS, and stock prices are generated. This might involve extrapolating trends or using 
+     more sophisticated financial modeling techniques.
+
+Known Issues:
+
+ * Data Reliance: This process relies on the availability and accuracy of data provided by the Yahoo Finance API.
+ * Null Values: The PE ratio and potentially other calculations may return Null values if the EPS is not a positive number or there is no data available for a specific year (e.g., 2020) in the Yahoo Finance API. 
+   You may want to implement additional logic to handle these cases (e.g., excluding rows with Null values or using alternative data sources).
 
 3. Load:
 
